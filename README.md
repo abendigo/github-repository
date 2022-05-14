@@ -36,3 +36,13 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+# Inspiration
+
+https://betterprogramming.pub/github-webhooks-docker-and-python-for-automatic-app-deployments-a7f18d23d5b7
+
+https://hub.docker.com/r/chrimaho/update-from-git
+
+https://github.com/chrimaho/update-from-git
+
+https://cheatcode.co/tutorials/how-to-clone-and-sync-a-github-repo-via-node-js
