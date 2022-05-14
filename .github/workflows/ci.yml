@@ -10,6 +10,9 @@ on:
 
 jobs:
   push_to_registry:
+    permissions:
+      packages: write
+      contents: read
     runs-on: ubuntu-latest
     steps:
       # - name: Checkout
