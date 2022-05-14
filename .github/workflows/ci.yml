@@ -30,5 +30,5 @@ jobs:
         with:
           tags: ghcr.io/abendigo/github-repository:latest
           push: true
-          build-args: |
-            "NPM_TOKEN=${{ secrets.GITHUB_TOKEN }}"
+          # build-args: |
+          #   "NPM_TOKEN=${{ secrets.GITHUB_TOKEN }}"
