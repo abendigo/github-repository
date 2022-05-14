@@ -1,9 +1,6 @@
 import child_process from 'child_process';
 import fs from 'fs';
 
-// console.log('sleeping...');
-// await new Promise((r) => setTimeout(r, 2_000));
-
 // https://github.com/abendigo/portainer-compose.git
 const username = 'abendigo';
 const repo = 'use-beckylib'; // 'portainer-compose';
@@ -29,8 +26,6 @@ if (!exists) {
 //     child_process.execSync(`cd repos/${username}/${repo} && git pull origin ${branch} --rebase`);
 //   }
 // }
-
-console.log('awake');
 
 const { host, path, port /*, server */ } = await import('./build/index.js');
 console.log({ host, path, port });
