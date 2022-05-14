@@ -24,10 +24,13 @@ EXPOSE $PORT
 
 WORKDIR /usr/src/service
 
-COPY --from=build /src/node_modules .
+COPY --from=build /src/node_modules node_modules
+COPY --from=build /src/static static
+COPY --from=build /src/build build
+
+COPY --from=build /src/package.json .
 COPY --from=build /src/start.js .
-COPY --from=build /src/static .
-COPY --from=build /src/build .
 
 USER node
 CMD ["node", "start.js"]
+# CMD ["node", "build"]
