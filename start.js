@@ -1,43 +1,32 @@
 import child_process from 'child_process';
 import fs from 'fs';
 
-// https://github.com/abendigo/portainer-compose.git
-// const username = 'abendigo';
-// const repo = 'use-beckylib'; // 'portainer-compose';
-// const repo = 'portainer-compose';
+const { REPOSITORY: repository, MAKE_DIRECTORY: mkdir } = process.env;
 
-// console.log('===========================================');
-// console.log(process.env);
-// console.log('===========================================');
+if (mkdir) {
+  const exists = fs.existsSync(`repos/${mkdir}`);
+  if (!exists) {
+    console.log(child_process.execSync(`mkdir -p repos/${mkdir}`).toString());
+  }
+}
 
-const { REPOSITORY: repository } = process.env;
+if (repository) {
+  const url = new URL(repository);
+  const [, owner, name] = url.pathname.split('/');
 
-// console.log({ repository });
+  const repoPath = `${owner}/${name}`;
+  const exists = fs.existsSync(`repos/${repoPath}`);
 
-const url = new URL(repository);
-// console.log({ url });
-
-const [, owner, name] = url.pathname.split('/');
-// console.log({ owner, name });
-
-// const repoPath = `${username}/${repo}`;
-const repoPath = `${owner}/${name}`;
-const exists = fs.existsSync(`repos/${repoPath}`);
-
-// console.log('PWD:', child_process.execSync(`pwd`).toString());
-// console.log('ID:', child_process.execSync(`id`).toString());
-
-if (!exists) {
-  console.log(
-    child_process
-      .execSync(
-        // `git clone https://github.com/${username}/${repo}.git repos/${username}/${repo}`
-        `git clone ${repository} repos/${repoPath}`
-        // `cd repos && git clone https://github.com/${username}/${repo}.git`
-        // `ls -l`
-      )
-      .toString()
-  );
+  if (!exists) {
+    console.log(
+      child_process
+        .execSync(
+          // `git clone https://github.com/${username}/${repo}.git repos/${username}/${repo}`
+          `git clone ${repository} repos/${repoPath}`
+        )
+        .toString()
+    );
+  }
 }
 // see https://stackoverflow.com/questions/9589814/how-do-i-force-git-pull-to-overwrite-everything-on-every-pull
 // git fetch origin master
