@@ -26,6 +26,8 @@ WORKDIR /usr/src/service
 
 RUN mkdir repos && chown 1000:1000 repos
 
+COPY --from=build /src/wait-for.sh repos
+
 COPY --from=build /src/node_modules node_modules
 COPY --from=build /src/static static
 COPY --from=build /src/build build
@@ -33,7 +35,6 @@ COPY --from=build /src/build build
 COPY --from=build /src/package.json .
 COPY --from=build /src/start.js .
 
-COPY --from=build /src/wait-for.sh repos
 
 USER node
 CMD ["node", "start.js"]
