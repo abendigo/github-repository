@@ -7,8 +7,8 @@ if (repository) {
   const url = new URL(repository);
   const [, owner, name] = url.pathname.split('/');
 
-  const repoPath = `${owner}/${name}`;
-  const exists = fs.existsSync(`repos/${repoPath}`);
+  const fullName = `${owner}/${name}`;
+  const exists = fs.existsSync(`repos/${fullName}`);
 
   // if (mkdir) {
   //   // const exists = fs.existsSync(`repos/${mkdir}`);
@@ -22,7 +22,7 @@ if (repository) {
       child_process
         .execSync(
           // `git clone https://github.com/${username}/${repo}.git repos/${username}/${repo}`
-          `git clone ${repository} repos/${repoPath}`
+          `git clone ${repository} repos/${fullName}`
         )
         .toString()
     );
