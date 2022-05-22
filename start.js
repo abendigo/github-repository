@@ -1,7 +1,7 @@
 import child_process from 'child_process';
 import fs from 'fs';
 
-const { REPOSITORY: repository, MAKE_DIRECTORY: mkdir, DISABLE_SERVICE: disable } = process.env;
+const { REPOSITORY: repository, DISABLE_SERVICE: disable } = process.env;
 
 if (repository) {
   const url = new URL(repository);
