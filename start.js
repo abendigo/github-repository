@@ -1,14 +1,7 @@
 import child_process from 'child_process';
 import fs from 'fs';
 
-const { REPOSITORY: repository, MAKE_DIRECTORY: mkdir } = process.env;
-
-if (mkdir) {
-  const exists = fs.existsSync(`repos/${mkdir}`);
-  if (!exists) {
-    console.log(child_process.execSync(`mkdir -p repos/${mkdir}`).toString());
-  }
-}
+const { REPOSITORY: repository, MAKE_DIRECTORY: mkdir, DISABLE_SERVICE: disable } = process.env;
 
 if (repository) {
   const url = new URL(repository);
@@ -16,6 +9,13 @@ if (repository) {
 
   const repoPath = `${owner}/${name}`;
   const exists = fs.existsSync(`repos/${repoPath}`);
+
+  // if (mkdir) {
+  //   // const exists = fs.existsSync(`repos/${mkdir}`);
+  //   // if (!exists) {
+  //   console.log(child_process.execSync(`mkdir -p repos/${mkdir}`).toString());
+  //   // }
+  // }
 
   if (!exists) {
     console.log(
@@ -42,5 +42,7 @@ if (repository) {
 //   }
 // }
 
-const { host, path, port /*, server */ } = await import('./build/index.js');
-console.log({ host, path, port });
+if (!disable) {
+  const { host, path, port /*, server */ } = await import('./build/index.js');
+  console.log({ host, path, port });
+}

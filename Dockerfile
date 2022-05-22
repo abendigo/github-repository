@@ -33,6 +33,8 @@ COPY --from=build /src/build build
 COPY --from=build /src/package.json .
 COPY --from=build /src/start.js .
 
+COPY --from=build /src/wait-for.sh repos
+
 USER node
 CMD ["node", "start.js"]
 # CMD ["node", "build"]
