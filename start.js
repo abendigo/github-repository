@@ -28,16 +28,16 @@ const exists = fs.existsSync(`repos/${repoPath}`);
 // console.log('ID:', child_process.execSync(`id`).toString());
 
 if (!exists) {
-	console.log(
-		child_process
-			.execSync(
-				// `git clone https://github.com/${username}/${repo}.git repos/${username}/${repo}`
-				`git clone ${repository} repos/${repoPath}`
-				// `cd repos && git clone https://github.com/${username}/${repo}.git`
-				// `ls -l`
-			)
-			.toString()
-	);
+  console.log(
+    child_process
+      .execSync(
+        // `git clone https://github.com/${username}/${repo}.git repos/${username}/${repo}`
+        `git clone ${repository} repos/${repoPath}`
+        // `cd repos && git clone https://github.com/${username}/${repo}.git`
+        // `ls -l`
+      )
+      .toString()
+  );
 }
 // see https://stackoverflow.com/questions/9589814/how-do-i-force-git-pull-to-overwrite-everything-on-every-pull
 // git fetch origin master
@@ -53,5 +53,5 @@ if (!exists) {
 //   }
 // }
 
-// const { host, path, port /*, server */ } = await import('./build/index.js');
-// console.log({ host, path, port });
+const { host, path, port /*, server */ } = await import('./build/index.js');
+console.log({ host, path, port });
