@@ -37,6 +37,12 @@ You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
 
+## Docker
+
+    docker run --rm -v repos:/usr/src/service/repos:rw -v $(pwd):/usr/src/service -w /usr/src/service node:16 npm run dev
+
+    docker run --rm -it -v repos:/repos:rw node:16 bash
+
 # Inspiration
 
 https://betterprogramming.pub/github-webhooks-docker-and-python-for-automatic-app-deployments-a7f18d23d5b7
