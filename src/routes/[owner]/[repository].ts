@@ -24,7 +24,7 @@ export const post: RequestHandler = async ({ params, request }) => {
   // const owner = 'abendigo';
   // const name = 'github-repository.git';
   const { owner, repository } = params;
-  const branch = 'main';
+  const branch = process.env.GITHUB_BRANCH ?? 'main';
   const fullName = `${owner}/${repository}`;
 
   // see https://stackoverflow.com/questions/9589814/how-do-i-force-git-pull-to-overwrite-everything-on-every-pull
